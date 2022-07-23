@@ -1,0 +1,39 @@
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input
+      type="text"
+      name="city"
+      placeholder="Search By Name"
+      [(ngModel)]="cityName"
+    />
+  </form>
+  <div class="loading" *ngIf="!weatherData">Loading...</div>
+  <div class="info" *ngIf="weatherData">
+    <div class="top-info">
+      <h1 class="city">{{ weatherData.name }}</h1>
+      <h3 class="gloab_temp">
+        {{ weatherData.main.temp | number: "1.0-0" }} °C
+      </h3>
+    </div>
+    <div class="bottom-info">
+      <div class="weather">
+        <div class="details">
+          <div class="min_temp">
+            <span>Min Temp:</span>
+            {{ weatherData.main.temp_min | number: "1.0-0" }} °C
+          </div>
+          <div class="max_temp">
+            <span>Max Temp:</span
+            >{{ weatherData.main.temp_max | number: "1.0-0" }} °C
+          </div>
+          <div class="humidity">
+            <span>Humidity:</span> {{ weatherData.main.humidity }} %
+          </div>
+          <div class="wind">
+            <span>Wind:</span> {{ weatherData.wind.speed }} km/h
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
